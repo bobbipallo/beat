@@ -1,7 +1,6 @@
-import mongoose from 'mongoose'
-var Schema = mongoose.Schema
+import mongoose, { Schema } from 'mongoose'
 
-var song = new Schema({
+const SongSchema: Schema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -28,8 +27,4 @@ var song = new Schema({
   },
 })
 
-mongoose.models = {}
-
-var Song = mongoose.model('Song', song)
-
-export default Song
+export default mongoose.models.Song || mongoose.model('Song', SongSchema)
