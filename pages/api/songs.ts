@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import connectDB from '../../utils/mongodb'
-import Song from '../../models/Song'
+import connectDB from '@/utils/mongodb'
+import Song from '@/models/Song'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
