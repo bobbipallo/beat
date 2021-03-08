@@ -1,12 +1,9 @@
+import { NextApiRequest, NextApiResponse } from 'next'
 import mongoose from 'mongoose'
 
-const { MONGODB_URI, MONGODB_DB } = process.env
+type Handler = (req: NextApiRequest, res: NextApiResponse) => Promise<void>
 
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local')
-}
-
-const connectDB = (handler) => async (req, res) => {
+const connectDB = (handler: Handler) => async (req: NextApiRequest, res: NextApiResponse) => {
   if (mongoose.connections[0].readyState) {
     // Use current db connection
     return handler(req, res)
