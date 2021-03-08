@@ -1,41 +1,40 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import client, { q } from '../../utils/fauna'
-import { Song } from '../../types'
+import connectDB from '../../utils/mongodb'
+import Song from '../../models/Song'
 
-const { Map, Paginate, Documents, Collection, Lambda, Get, Var, Create } = q
-
-type Docs = {
-  data: Song[]
-}
-
-module.exports = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     try {
-      const docs: Docs = await client.query(
-        Map(Paginate(Documents(Collection('songs'))), Lambda('ref', Get(Var('ref')))),
-      )
+      const songs = await Song.find()
 
-      res.status(200).json(docs.data)
+      res.json(songs)
     } catch (err) {
-      res.status(err.status || 500).send('Something went wrong')
+      res.status(err.status || 500).send(err.message || 'Something went wrong')
     }
   } else if (req.method === 'POST') {
     try {
-      const { title, author } = req.body
+      const { title, author, date, genre } = req.body
+
+      if (!title || !author || !date || !genre)
+        return res.status(400).send('Pleade provide the following properties: title, author, date, genre')
 
       const data = {
         title,
         author,
+        date,
+        genre,
       }
 
-      const doc = await client.query(Create(Collection('songs'), { data }))
+      const song = await Song.create(data)
 
-      res.status(200).json(doc)
+      res.json(song)
     } catch (err) {
-      res.status(err.status || 500).send('Something went wrong')
+      res.status(err.status || 500).send(err.message || 'Something went wrong')
     }
   } else {
     res.status(405).send('Unsupported method')
   }
 }
+
+export default connectDB(handler)
