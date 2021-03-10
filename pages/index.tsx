@@ -1,3 +1,13 @@
-export default function Home() {
-  return <div>hi</div>
+import { FunctionComponent } from 'react'
+
+import Player from '@/components/player'
+
+const Home: FunctionComponent = () => {
+  return (
+    <>
+      <Player />
+    </>
+  )
 }
+
+export default Home
