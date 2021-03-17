@@ -7,7 +7,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     const song = await Song.aggregate([{ $sample: { size: 1 } }])
 
-    res.json(song)
+    res.json(song[0])
   } else {
     res.status(405).send('Unsupported method')
   }

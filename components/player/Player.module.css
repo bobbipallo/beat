@@ -1,10 +1,10 @@
 .overlay {
   position: fixed;
-  top: 10vh;
+  top: 0;
   right: 0;
-  bottom: 10vh;
+  bottom: 0;
   z-index: 20;
-  height: 80vh;
+  height: 100vh;
   width: 100%;
   transition: background-color 1000ms linear;
 }
@@ -14,9 +14,9 @@
 
 .container {
   position: fixed;
-  top: 10vh;
+  top: 0;
   right: 0;
-  bottom: 10vh;
+  bottom: 0;
   left: 0;
   z-index: 5;
   overflow: hidden;
@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: center;
   width: 100% !important;
-  height: 80vh !important;
+  height: 100vh !important;
 }
 
 .container div {
@@ -35,4 +35,28 @@
   position: relative;
   display: block;
   width: 100%;
+}
+
+.controls {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.button {
+  background-color: rgb(53, 102, 235);
+  color: white;
+  padding: 0.5em 2em;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  border-radius: 0.5em;
+  margin: 0.1em;
+  cursor: pointer;
 }
