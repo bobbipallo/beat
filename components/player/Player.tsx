@@ -52,7 +52,10 @@ const Player: FunctionComponent = () => {
     <>
       <div className={`${styles.overlay} ${!started ? styles.active : ''}`}></div>
       <div>
-        <div className="fixed top-0 left-0 z-50 w-full text-white">{song?.title}</div>
+        <div className="fixed top-0 left-0 z-50 w-full text-white">
+          <h1 className="text-5xl text-white font-extrabold">{song?.title}</h1>
+          <h4 className="text-3xl text-white">{song?.author}</h4>
+        </div>
         {song && (
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${song.youtube}?autoplay=1origin=http://localhost:3000theme=light`}
