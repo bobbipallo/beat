@@ -60,6 +60,7 @@ const Player: FunctionComponent = () => {
           url={`https://www.youtube.com/watch?v=${song.youtube}?autoplay=1origin=http://localhost:3000theme=light`}
           className={styles.container}
           onStart={onStart}
+          onEnded={getNextSong}
           playing={playing}
           config={{
             playerVars: {
