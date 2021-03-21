@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import Icon, { IconType } from '@/components/icon'
+import Icon, { IconType } from '@/components/Icon'
 
 interface ControlButtonProps {
   onClick: () => void

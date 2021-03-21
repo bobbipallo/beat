@@ -50,7 +50,7 @@ const Player: FunctionComponent = () => {
         className={`${styles.overlay} ${!started ? styles.active : ''}`}
       ></div>
       {started && (
-        <div className="fixed top-0 left-0 z-50 w-full text-white px-4 py-4">
+        <div className="fixed top-0 left-0 z-50 text-white px-4 py-4">
           <h1 className="text-6xl text-white font-extrabold">{song?.title}</h1>
           <h4 className="text-2xl text-white">{song?.author}</h4>
         </div>
