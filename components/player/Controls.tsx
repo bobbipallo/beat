@@ -24,16 +24,18 @@ interface ControlsProps {
   playing: boolean
   onPlay: () => void
   onNext: () => void
+  onPrevious: () => void
 }
 
 const Controls: FunctionComponent<ControlsProps> = ({
   onPlay,
   onNext,
+  onPrevious,
   playing,
 }) => {
   return (
     <div className="bg-black inline-block pl-4 py-2 pr-2 rounded-r-full bg-opacity-25">
-      <ControlButton icon="previous" onClick={() => ({})} />
+      <ControlButton icon="previous" onClick={onPrevious} />
       <ControlButton icon={playing ? 'pause' : 'play'} onClick={onPlay} />
       <ControlButton icon="next" onClick={onNext} />
     </div>
